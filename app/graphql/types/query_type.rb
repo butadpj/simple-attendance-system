@@ -1,6 +1,6 @@
 module Types
   class QueryType < Types::BaseObject
-    field :users, Types::UserType, null: true do
+    field :users, [Types::UserType], null: true do
       description 'Query all users'
     end
     def users
