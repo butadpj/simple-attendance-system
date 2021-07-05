@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_05_103952) do
+ActiveRecord::Schema.define(version: 2021_07_05_113417) do
+
+  create_table "attendances", force: :cascade do |t|
+    t.integer "employeeType_id", null: false
+    t.time "sign_in"
+    t.time "sign_out"
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employeeType_id"], name: "index_attendances_on_employeeType_id"
+  end
 
   create_table "employee_types", force: :cascade do |t|
     t.integer "employee_id", null: false
@@ -51,6 +61,7 @@ ActiveRecord::Schema.define(version: 2021_07_05_103952) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "attendances", "employeeTypes"
   add_foreign_key "employee_types", "employees"
   add_foreign_key "employee_types", "types"
   add_foreign_key "employees", "users"

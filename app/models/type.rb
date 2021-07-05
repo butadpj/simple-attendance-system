@@ -1,4 +1,7 @@
 class Type < ApplicationRecord
+  has_many :employee_types
+  has_many :employees, through: :employee_types
+
   after_initialize :set_type_default
 
   def set_type_default
