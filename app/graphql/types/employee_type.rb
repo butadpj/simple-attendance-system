@@ -5,6 +5,6 @@ module Types
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
 
-    field :type, Types::EmploymentType, null: false
+    # field :employment_type, Types::EmploymentType, null: false, method: :employment
   end
 end
