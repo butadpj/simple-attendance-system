@@ -58,3 +58,5 @@ gem "graphiql-rails", "~> 1.7"
 gem "devise", "~> 4.8"
 
 gem "devise-bootstrap-views", "~> 1.1"
+
+gem 'rack-cors'
