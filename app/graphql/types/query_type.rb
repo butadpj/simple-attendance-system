@@ -22,12 +22,27 @@ module Types
       context[:current_user]
     end
 
-<<<<<<< HEAD
     def usersCount
       User.count
     end
 
-    # ATTENDANCE
+    field :employees, [Types::EmployeeType], null: true do
+      description 'Query all employees'
+    end
+
+    field :employeesCount, Integer, null: true do
+      description 'Query that counts all employees'
+    end
+
+    def employees
+      Employee.all
+    end
+
+    def employeesCount
+      User.count
+    end
+
+      # ATTENDANCE
     # field :attendances, [Types::AttendanceType], null: true do
     #   description 'Query all attendances'
     # end
@@ -40,26 +55,18 @@ module Types
     #   description 'Query that counts all attendances'
     # end
 
-    #
+    
 
-    def attendances
-      Attendance.all
-    end
+    # def attendances
+    #   Attendance.all
+    # end
 
-    def current_attendance
-      context[:current_user]
-    end
+    # def current_attendance
+    #   context[:current_user]
+    # end
 
-    def attendancesCount
-      Attendance.count
-=======
-    field :employees, [Types::EmployeeType], null: true do
-      description 'Query all employees'
-    end
-    def employees
-      Employee.all
->>>>>>> main
-    end
+    # def attendancesCount
+    #   Attendance.count
 
   end
 end
