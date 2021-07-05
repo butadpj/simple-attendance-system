@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_05_055400) do
+ActiveRecord::Schema.define(version: 2021_07_05_103952) do
+
+  create_table "employee_types", force: :cascade do |t|
+    t.integer "employee_id", null: false
+    t.integer "type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_employee_types_on_employee_id"
+    t.index ["type_id"], name: "index_employee_types_on_type_id"
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_employees_on_user_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "type", default: ""
+    t.integer "min_hours"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,4 +51,7 @@ ActiveRecord::Schema.define(version: 2021_07_05_055400) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "employee_types", "employees"
+  add_foreign_key "employee_types", "types"
+  add_foreign_key "employees", "users"
 end
