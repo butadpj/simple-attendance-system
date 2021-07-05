@@ -12,7 +12,13 @@ module AttendanceSystem
     config.load_defaults 6.1
 
     # Configuration for the application, engines, and railties goes here.
-    #
+    Rails.application.config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'http://localhost:8080/'
+        resource '*', headers: :any, methods: %i[get post]
+      end
+    end
+
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
