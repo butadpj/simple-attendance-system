@@ -22,6 +22,7 @@ module Types
       context[:current_user]
     end
 
+<<<<<<< HEAD
     def usersCount
       User.count
     end
@@ -51,6 +52,13 @@ module Types
 
     def attendancesCount
       Attendance.count
+=======
+    field :employees, [Types::EmployeeType], null: true do
+      description 'Query all employees'
+    end
+    def employees
+      Employee.all
+>>>>>>> main
     end
 
   end
