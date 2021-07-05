@@ -42,31 +42,29 @@ module Types
       User.count
     end
 
-      # ATTENDANCE
-    # field :attendances, [Types::AttendanceType], null: true do
-    #   description 'Query all attendances'
-    # end
+    # ATTENDANCE
+    field :attendances, [Types::AttendanceType], null: true do
+      description 'Query all attendances'
+    end
 
-    # field :current_attendance, Types::AttendanceType, null: true do
-    #   description 'Query the current logged in attendance'
-    # end
+    field :current_attendance, Types::AttendanceType, null: true do
+      description 'Query the current logged in attendance'
+    end
 
-    # field :attendancesCount, Integer, null: true do
-    #   description 'Query that counts all attendances'
-    # end
+    field :attendancesCount, Integer, null: true do
+      description 'Query that counts all attendances'
+    end
 
-    
+    def attendances
+      Attendance.all
+    end
 
-    # def attendances
-    #   Attendance.all
-    # end
+    def current_attendance
+      context[:current_user]
+    end
 
-    # def current_attendance
-    #   context[:current_user]
-    # end
-
-    # def attendancesCount
-    #   Attendance.count
-
+    def attendancesCount
+      Attendance.count
+    end
   end
 end

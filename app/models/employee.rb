@@ -3,6 +3,6 @@ class Employee < ApplicationRecord
 
   validates :user_id, presence: true, uniqueness: true
 
-  has_many :employee_types
-  has_many :types, through: :employee_types
+  has_one :employment, dependent: :destroy
+  has_one :type, through: :employment
 end

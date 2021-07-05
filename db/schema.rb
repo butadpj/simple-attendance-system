@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_05_124843) do
+ActiveRecord::Schema.define(version: 2021_07_05_151721) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer "employeeType_id", null: false
@@ -22,20 +22,20 @@ ActiveRecord::Schema.define(version: 2021_07_05_124843) do
     t.index ["employeeType_id"], name: "index_attendances_on_employeeType_id"
   end
 
-  create_table "employee_types", force: :cascade do |t|
-    t.integer "employee_id", null: false
-    t.integer "type_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["employee_id"], name: "index_employee_types_on_employee_id"
-    t.index ["type_id"], name: "index_employee_types_on_type_id"
-  end
-
   create_table "employees", force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_employees_on_user_id"
+  end
+
+  create_table "employments", force: :cascade do |t|
+    t.integer "employee_id", null: false
+    t.integer "type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_employments_on_employee_id"
+    t.index ["type_id"], name: "index_employments_on_type_id"
   end
 
   create_table "types", force: :cascade do |t|
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_07_05_124843) do
   end
 
   add_foreign_key "attendances", "employeeTypes"
-  add_foreign_key "employee_types", "employees"
-  add_foreign_key "employee_types", "types"
   add_foreign_key "employees", "users"
+  add_foreign_key "employments", "employees"
+  add_foreign_key "employments", "types"
 end

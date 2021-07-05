@@ -1,4 +1,4 @@
-class EmployeeType < ApplicationRecord
+class Employment < ApplicationRecord
   belongs_to :employee
   belongs_to :type
 

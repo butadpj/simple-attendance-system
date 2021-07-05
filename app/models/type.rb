@@ -1,6 +1,6 @@
 class Type < ApplicationRecord
-  has_many :employee_types
-  has_many :employees, through: :employee_types
+  has_one :employment
+  has_many :employee, through: :employment
 
   after_create :set_type_default
 
