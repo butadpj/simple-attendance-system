@@ -39,6 +39,8 @@ module Types
     #   description 'Query that counts all attendances'
     # end
 
+    #
+
     def attendances
       Attendance.all
     end
