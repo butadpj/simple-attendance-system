@@ -1,0 +1,13 @@
+[33m49b04b2[m[33m ([m[1;36mHEAD -> [m[1;32mfeature/connection-association[m[33m, [m[1;31morigin/feature/connection-association[m[33m)[m add associations to each model
+[33mb6824e7[m[33m ([m[1;32mdevelop[m[33m)[m Merge branch 'feature/user-auth' into development
+[33m30a279a[m Add User Authentication feature
+[33mf80d9a2[m Merge pull request #4 from Sairoden/develop
+[33m160e2cc[m[33m ([m[1;31morigin/develop[m[33m)[m fix bugs authenticate_user
+[33m3c67ff4[m Merge pull request #3 from Sairoden/develop
+[33mbcc0abd[m fix authentication devise
+[33me356428[m Merge pull request #2 from Sairoden/feature/association
+[33mb6cd945[m[33m ([m[1;31morigin/feature/association[m[33m, [m[1;32mfeature/association[m[33m)[m add and connect employee/employeeTypes/types association
+[33me278a2d[m[33m ([m[1;32mmain[m[33m)[m Merge pull request #1 from Sairoden/dev/butadpj
+[33mb444ea5[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/dev/butadpj[m[33m)[m Change ruby version from 2.7.3 to 3.0.1
+[33me4617b4[m[33m ([m[1;31morigin/development[m[33m)[m devise user
+[33m1dbde46[m initial commit and integrate graphql
