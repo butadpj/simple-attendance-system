@@ -22,7 +22,7 @@ class GraphqlController < ApplicationController
   def current_user(token)
     return if token.blank?
 
-    crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base.byteslice(0..31))
+    crypt = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
     user_id = crypt.decrypt_and_verify(token).gsub('user-id:', '').to_i
     User.find(user_id)
   rescue ActiveSupport::MessageVerifier::InvalidSignature
