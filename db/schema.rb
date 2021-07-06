@@ -12,8 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2021_07_06_034038) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "attendances", force: :cascade do |t|
-    t.integer "employment_id", null: false
+    t.bigint "employment_id", null: false
     t.time "sign_in"
     t.time "sign_out"
     t.date "date"
@@ -23,15 +26,15 @@ ActiveRecord::Schema.define(version: 2021_07_06_034038) do
   end
 
   create_table "employees", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_employees_on_user_id"
   end
 
   create_table "employments", force: :cascade do |t|
-    t.integer "employee_id", null: false
-    t.integer "type_id", null: false
+    t.bigint "employee_id", null: false
+    t.bigint "type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["employee_id"], name: "index_employments_on_employee_id"

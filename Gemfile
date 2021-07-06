@@ -60,3 +60,4 @@ gem "graphql"
 gem "graphiql-rails"
 
 gem 'rack-cors'
+gem 'pg', '~> 1.1'
