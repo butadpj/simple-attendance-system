@@ -1,16 +1,12 @@
 class GraphqlController < ApplicationController
-  # If accessing from outside this domain, nullify the session
-  # This allows for outside API access while preventing CSRF attacks,
-  # but you'll have to authenticate your user separately
-  # protect_from_forgery with: :null_session
-
   def execute
     variables = prepare_variables(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
     context = {
-      # Query context goes here, for example:
-      current_user: get_current_user
+      session: SESSION,
+      current_user: current_user(SESSION[:token]),
+      admin?: admin?(SESSION[:token])
     }
     result = AttendanceSystemSchema.execute(query, variables: variables, context: context,
                                                    operation_name: operation_name)
@@ -23,8 +19,21 @@ class GraphqlController < ApplicationController
 
   private
 
-  def get_current_user
-    current_user
+  def current_user(token)
+    return if token.blank?
+
+    crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base.byteslice(0..31))
+    user_id = crypt.decrypt_and_verify(token).gsub('user-id:', '').to_i
+    User.find(user_id)
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    nil
+  end
+
+  def admin?(token)
+    return if token.blank?
+
+    user = current_user(token)
+    user.admin
   end
 
   # Handle variables in form data, JSON body, or a blank value
