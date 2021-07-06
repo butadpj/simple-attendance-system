@@ -13,13 +13,13 @@
 ActiveRecord::Schema.define(version: 2021_07_06_034038) do
 
   create_table "attendances", force: :cascade do |t|
-    t.integer "employment_id", null: false
+    t.integer "employeeType_id", null: false
     t.time "sign_in"
     t.time "sign_out"
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["employment_id"], name: "index_attendances_on_employment_id"
+    t.index ["employeeType_id"], name: "index_attendances_on_employeeType_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2021_07_06_034038) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "attendances", "employments"
+  add_foreign_key "attendances", "employeeTypes"
   add_foreign_key "employees", "users"
   add_foreign_key "employments", "employees"
   add_foreign_key "employments", "types"

@@ -5,5 +5,6 @@ module Types
     field :logout_user, mutation: Mutations::LogoutUser
     field :create_attendance, mutation: Mutations::CreateAttendance
     field :create_employee, mutation: Mutations::CreateEmployee
+    field :create_employment, mutation: Mutations::CreateEmployment
   end
 end
